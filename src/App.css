@@ -1,0 +1,9 @@
+@import '~antd/dist/antd.css';
+
+form > div {
+  margin: 1rem;
+}
+
+div > form {
+  padding: 1rem;
+}

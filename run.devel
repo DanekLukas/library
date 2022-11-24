@@ -1,0 +1,1 @@
+yarn lint:fix;yarn build-no-map;rm -r /mnt/ext/home/lukas/workspace/javascript/knihovna.node/build; cp -r build /mnt/ext/home/lukas/workspace/javascript/knihovna.node/

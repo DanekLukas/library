@@ -1,0 +1,243 @@
+@import '~antd/dist/antd.less';
+
+@btn-bkg: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+@use-margin: 14px;
+@background-color: white;// #f0f2f5;
+
+#root {
+  height: 100%;
+}
+
+div.all {
+  display: flex!important;
+  flex-grow: 1!important;
+  min-height: 100%!important;
+  
+}
+
+.gradient-bkg {
+  background-image: @btn-bkg
+}
+
+.display-flex-row {
+  display: flex;
+}
+
+.display-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.no-after:after {
+  content: none;
+}
+
+.form-item label {
+  width: 6rem;
+}
+
+.form-item button,
+.form-item button:focus,
+.form-item button:hover {
+  background-image: @btn-bkg;
+}
+
+.use-margin-left {
+  margin-left: @use-margin;
+}
+
+.use-margin-bottom {
+  margin-bottom: @use-margin;
+}
+
+.base {
+  margin-top: 1rem;
+}
+
+.form-width {
+  width: 40rem;
+}
+
+.form-width textarea {
+  height: 20rem;
+}
+
+h1 {
+  font-weight: 100!important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  background-color: lightgrey;
+  border:1px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-weight: 400!important;
+}
+
+div.preview {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.preview > div {
+  width: 40rem;
+  margin-top: 1rem;
+}
+
+div.menu {
+  margin: 1rem 0;
+}
+
+div.menu > a {
+  display: block;
+}
+
+.ant-form {
+  margin-top: 1rem !important;
+}
+
+.messages {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+}
+
+.messages > div {
+  display: block;
+  position: relative;
+  border: 1px solid black;
+  background-color: #ffffffaa;
+  width: calc(100% - 2rem);
+  padding: 0.2rem 1rem;
+  margin-bottom: 0.2rem;
+}
+
+div.loading {
+  position: fixed;
+  border: 1px solid black;
+  padding: 0.2rem 1rem;
+  margin-top: 1rem;
+  z-index: 2;
+  background-color: #ffffffaa;
+}
+  
+h5.cv-property {
+  width: 100%;
+
+  :first-child {
+    display: inline-block;
+    min-width: 9rem;
+    margin-right: 0.5rem;
+  }
+
+  :nth-child(2) {
+    font-weight: bold;
+  }
+
+  :nth-child(3) {
+    float: right;
+    margin-right: 0.2rem;
+  }
+}
+
+div.ant-typography > p, div.ant-typography > blockquote > p {
+  text-align: justify;
+}
+
+body, .ant-layout, .by, .ant-layout-content, .ant-layout-sider-children, .ant-layout-header, .ant-layout-footer {
+  background-color: @background-color;
+  padding-top: 1rem;
+}
+
+.ant-layout-sider-children {
+  padding-left: 3rem;
+}
+
+div.paginator {
+  display: flex;
+  justify-content: end;
+
+}
+
+div.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: @primary-color;
+  border: 1px solid @primary-color;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.by {
+  margin-top: auto;
+  align-self: flex-end;
+  padding: 0.2rem 0.5rem;
+}
+
+.ant-form {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: flex-end;
+}
+
+.ant-input-disabled {
+  color: inherit !important;
+  background-color: inherit !important;
+  border: inherit;
+  cursor: default !important;
+  text-overflow: ellipsis;
+}
+
+.ant-form-item-label > label {
+  text-overflow: ellipsis;
+}
+
+.ant-btn {
+  margin-right: 5px;
+}
+
+.ant-layout-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ant-form-item-label > label,
+.ant-menu-title-content {
+  display: block;
+}
+
+.ant-form-item-label > label {
+  transform: translateY(6px);
+}
+
+.ant-tabs-tab-btn::first-letter,
+.ant-form-item-label > label::first-letter,
+.ant-menu-title-content::first-letter {
+  text-transform: uppercase;
+}
+
+.ant-btn-default,
+.ant-btn-primary,
+th {
+  text-transform: capitalize;
+}
