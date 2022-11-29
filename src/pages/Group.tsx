@@ -12,7 +12,7 @@ const Group = () => {
 
   const initGroup = { group_name: '', created_by: 0 }
 
-  type group = typeof initGroup
+  type groupT = typeof initGroup
 
   const initGroupTypeNames = { group_name: '', user_type_name: '' }
 
@@ -38,14 +38,14 @@ const Group = () => {
 
   const [adding, setAdding] = useState('')
 
-  const [page, setPage] = useState(0)
+  // const [page, setPage] = useState(0)
   const limitRef = useRef(10)
   const orderRef = useRef('id_group')
   const myId = parseInt(getUser().id)
 
   const [data, setData] = useState<{
     member: Record<number, Record<number, member>>
-    group: Record<number, group>
+    group: Record<number, groupT>
   }>({ member: {}, group: {} })
 
   const [newGroup, setNewGroup] = useState('')
@@ -144,18 +144,18 @@ const Group = () => {
     notifyOnNetworkStatusChange: true,
     fetchPolicy: 'network-only',
     variables: {
-      offset: page * limitRef.current,
+      offset: 0, //page * limitRef.current,
       limit: limitRef.current,
       order: orderRef.current,
     },
     onCompleted: allData => {
       const viewData = allData.view_member.filter((itm: any) => itm.__typename === 'member')
       const member: Record<number, Record<number, member>> = {}
-      const group: Record<number, group> = {}
+      const group: Record<number, groupT> = {}
       viewData.forEach((one: any) => {
         if (!member[one.id_group]) member[one.id_group] = {}
         member[one.id_group][one.id_user] = getProperties(one, initUser) as member
-        group[one.id_group] = getProperties(one, initGroup) as group
+        group[one.id_group] = getProperties(one, initGroup) as groupT
       })
       setData({ member, group })
 
@@ -378,7 +378,7 @@ const Group = () => {
                                         idGroup: group[key as any].id_group,
                                       },
                                     })
-                                    setEdited(0)
+                                    setAdding('')
                                   }}
                                 >
                                   {getExpression('add')}

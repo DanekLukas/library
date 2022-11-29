@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { UserContext } from './contexts/UserContext'
 import Book from './pages/Book'
 import Books from './pages/Books'
@@ -9,13 +9,14 @@ import Layout from './pages/Layout'
 import Login from './pages/Login'
 import React, { useContext, useEffect, useState } from 'react'
 import Registration from './pages/Registration'
+import SetPassword from './pages/SetPassword'
 
 const Router = () => {
-  const { email, inRole } = useContext(UserContext)
+  const { email } = useContext(UserContext)
   const [isLoggedIn, setIsLoggedIn] = useState(email !== '')
   useEffect(() => {
     setIsLoggedIn(email !== '')
-  }, [email, inRole])
+  }, [email])
 
   const loggedInMenu = {
     add_book: Book,
@@ -39,6 +40,22 @@ const Router = () => {
     ))
   }
 
+  const useQuery = () => {
+    const { search } = useLocation()
+
+    return React.useMemo(() => new URLSearchParams(search), [search])
+  }
+
+  const SetPasswordElement = () => {
+    const query = useQuery()
+
+    return (
+      <Layout menu={['set-password']}>
+        <SetPassword token={query.get('token') || ''} />
+      </Layout>
+    )
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -46,6 +63,7 @@ const Router = () => {
           <>
             {isLoggedIn && getRoutes(loggedInMenu)}
             {!isLoggedIn && getRoutes(notLoggedMenu)}
+            <Route path='/set-password' element={<SetPasswordElement />} />s
           </>
           {isLoggedIn && <Route path='*' element={<Navigate to='/books' />} />}
           {!isLoggedIn && <Route path='*' element={<Navigate to='/login' />} />}

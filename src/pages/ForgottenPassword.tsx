@@ -10,7 +10,7 @@ import isEmail from 'validator/lib/isEmail'
 const mutation = {
   resetpassword: gql`
     mutation resetPassword($email: String, $lang: String) {
-      Resetpassword(email: $email, lang: $lang) {
+      ResetPassword(email: $email, lang: $lang) {
         error
         data
         message
@@ -31,8 +31,8 @@ const ForgottenPassword = () => {
       console.error(error)
     },
     onCompleted: data => {
-      if (data.Resetpassword.error) {
-        setMessage(getExpression(data.Resetpassword.message))
+      if (data.error !== '') {
+        setMessage(data.error)
       } else {
         navigate('/login')
       }
@@ -50,8 +50,6 @@ const ForgottenPassword = () => {
         lang: getLanguage(),
       },
     })
-    setMessage(getExpression('emailSentForReset').replace('__email__', email))
-    return
   }
 
   const onFinishFailed = () => {

@@ -32,9 +32,8 @@ export type LoginUserProps = {
 }
 
 const UserProvider = ({ children }: Props) => {
-  // const { getExpression } = useContext(LanguageContext)
-  // const { setMessage } = useContext(MessageContext)
   const { refetch: logoutQuery } = useQuery(query.logout, {
+    skip: true,
     onError: error => {
       // console.error(error)
     },
@@ -57,11 +56,15 @@ const UserProvider = ({ children }: Props) => {
 
   const logoutUser = () => {
     const loginUserProps: LoginUserProps = getUser()
-    logoutQuery({ id: loginUserProps.id, email: loginUserProps.email })
-    localStorage.removeItem(USER_STORAGE_KEY)
-    sessionStorage.removeItem(USER_STORAGE_KEY)
+    if (loginUserProps.id && loginUserProps.email)
+      logoutQuery({ id: loginUserProps.id, email: loginUserProps.email })
+    if (Object.keys(localStorage).includes(USER_STORAGE_KEY))
+      localStorage.removeItem(USER_STORAGE_KEY)
+    if (Object.keys(sessionStorage).includes(USER_STORAGE_KEY)) {
+      sessionStorage.removeItem(USER_STORAGE_KEY)
 
-    setEmail('')
+      setEmail('')
+    }
   }
 
   const inRole = (role: string) => {

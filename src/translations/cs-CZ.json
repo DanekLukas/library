@@ -106,5 +106,6 @@
   "group_name": "název",
   "user_type_name": "role",
   "members": "členové",
-  "cancel": "zahodit"
+  "cancel": "zahodit",
+  "set-password": "Nastavit heslo"
 }

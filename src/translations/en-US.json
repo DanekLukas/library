@@ -107,5 +107,6 @@
   "group_name": "name",
   "user_type_name": "role",
   "members": "members",
-  "cancel": "cancel"
+  "cancel": "cancel",
+  "set-password": "Set password"
 }
