@@ -25,3 +25,9 @@ yarn-error.log*
 runBuild.sh
 run.devel
 run.prod
+.eslintcache
+runBuild.sh
+./run.production.sh
+run.dev.sh
+run.production.sh
+.eslintcache

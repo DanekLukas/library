@@ -85,7 +85,7 @@ const Library = ({ children, menu }: Props) => {
           <Content style={{ paddingLeft: '1rem' }}>{children}</Content>
         </Layout>
         <Footer></Footer>
-        <div className='by'>Lukáš Daněk</div>
+        <div className='by'>© Lukáš Daněk</div>
       </Layout>
     </div>
   )
